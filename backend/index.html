@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://unpkg.com/pdf-lib/dist/pdf-lib.min.js" defer></script>
+    <script src="index.js" defer></script>
+    <script src="pdfmaker.js" defer></script>
+    <script src="bundle.js" defer></script>
+    <title>Resume PDF Download</title>
+</head>
+<body>
+
+    <input type="text" id="input-job-desc" value="no link">
+    <button onclick="run()">send link</button>
+    <div style="display: none;" id="loading">Loading...</div>
+    <button style="display: none;" id="download-resume">Download Resume</button>
+</body>
+</html>

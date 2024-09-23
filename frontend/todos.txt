@@ -1,0 +1,29 @@
+implement a question to ask if the user is:
+
+#add 3 type of resume and each with two styling
+
+# internship or professional Job
+
+# student or currently working
+
+This will help us decide what type of information we want 
+to focus on the resume. 
+
+for example if we know that he is a student looking for interships
+then we will focus the resume to showcase projects,
+
+if they're student looking for jobs then we will focus 
+certifications, projects
+
+depending on the job description decide if the resume should 
+be more of experience based or ...
+
+# later on let me make this as a resume companion, so that 
+people can start using it from freshmen year to senior, 
+so that they have all the things ready.
+
+#create an app called call-ity time, which is an ai app that help couple to have conversation over the phone
+so the app will feature
+
+audio, video calls,
+as the call goes on the ai will make sure it does not go dry. on action of the user.

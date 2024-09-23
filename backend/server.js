@@ -1,5 +1,3 @@
-// import { PDFDocument, StandardFonts, rgb } from 'pdf-lib'
-const {PDFDocument, StandardFonts, rgb} = require('pdf-lib')
 const { default: OpenAI } = require('openai');
 const cors = require('cors');
 const { createCanvas, loadImage } = require('canvas');

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
+// import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
 import axios from "axios";
 import UploadPdf from "./uploadPdf";
 import { doc, setDoc } from "firebase/firestore";
@@ -171,7 +171,7 @@ const App = () => {
 
   async function createResume(transformedResume) {
     // Create a new PDFDocument
-    const pdfDoc = await PDFDocument.create();
+    // const pdfDoc = await PDFDocument.create();
 
     // Add a page to the document
     const page = pdfDoc.addPage([595, 842]); // A4 size in points (8.27 x 11.69 inches)

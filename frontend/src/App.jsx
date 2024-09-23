@@ -27,12 +27,10 @@ function AppRoutes() {
       path: '/home',
       element: <Home />,
     },
-    ,
     {
       path: '/myresumes',
       element: <Resumes/>,
     },
-    ,
     {
       path: '/mybackground',
       element: <UserBackground/>,

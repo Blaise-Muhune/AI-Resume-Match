@@ -74,7 +74,7 @@ const Resumes = () => {
   const download = async (index) => {
 
     const body = {Airesponse: resumesData[index].AiResponse, stylechoice: ['template1', 'style2']}
-    await fetch("http://localhost:5000/downlaod-previous-resume", {
+    await fetch("/api/downlaod-previous-resume", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

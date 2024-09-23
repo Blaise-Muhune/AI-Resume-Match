@@ -19,7 +19,7 @@ const UploadPdf = () => {
     const formData = new FormData();
     formData.append('pdfFile', file);
 
-    fetch('http://localhost:5000/extract-text', {
+    fetch('/api/extract-text', {
       method: 'POST',
       body: formData,
     })

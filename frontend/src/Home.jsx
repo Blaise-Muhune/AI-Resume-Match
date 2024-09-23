@@ -107,7 +107,7 @@ const App = () => {
     formData.append("pdfFile", file);
 
     setLoadingMessage("extracting data from your resume...");
-    await fetch("http://localhost:5000/extract-text-pdf", {
+    await fetch("/api/extract-text-pdf", {
       method: "POST",
       body: formData,
     })
@@ -126,7 +126,7 @@ const App = () => {
     const body = { jobdesk, linkToJob, styleChoice };
     let isEnoughData = null;
 
-    await fetch("http://localhost:5000/gpt", {
+    await fetch("/api/gpt", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

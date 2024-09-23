@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import './Resumes.css';
-import { app, db } from './firebase/firebase';
-import { getFirestore, doc, getDoc } from 'firebase/firestore';
-import { getAuth, onAuthStateChanged } from 'firebase/auth';
+import {  db } from './firebase/firebase';
+import {  doc, getDoc } from 'firebase/firestore';
+import { onAuthStateChanged } from 'firebase/auth';
 import { useAuth } from './contexts/authContext';
 
 const Resumes = () => {

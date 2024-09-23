@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from "react";
 // import { PDFDocument, StandardFonts, rgb } from "pdf-lib";
-import axios from "axios";
-import UploadPdf from "./uploadPdf";
+// import axios from "axios";
+// import UploadPdf from "./uploadPdf";
 import { doc, setDoc } from "firebase/firestore";
 import "./Home.css";
 import { useAuth } from "./contexts/authContext";
-import { Navigate, Link } from "react-router-dom";
+import {  Link } from "react-router-dom";
 import { doSignInWithGoogle } from "./firebase/auth";
 import { IoMdMail } from "react-icons/io";
 import { FcGoogle } from "react-icons/fc";
 import { FaFileUpload, FaFilePdf } from "react-icons/fa";
 import { ImCross } from "react-icons/im";
-import { FaPaste } from "react-icons/fa";
+// import { FaPaste } from "react-icons/fa";
 
 const App = () => {
   const currentUser = useAuth();
@@ -21,15 +21,15 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [loadingMessage, setLoadingMessage] = useState("");
   const [message, setMessage] = useState("...");
-  const [isReady, setIsready] = useState(null);
-  const [text, setText] = useState("");
+  // const [isReady, setIsready] = useState(null);
+  // const [text, setText] = useState("");
   const [resumeDataToUse, setResumeDataToUse] = useState(null);
   const [dragOver, setDragOver] = useState(false);
   const [linkToJob, setLinkToJob] = useState("");
   const [isSignIn, setIsSignIn] = useState(null);
   const [wordcount, setWordcount] = useState(0);
   const [initialResumeClicked, setInitialResumeClicked] = useState(false)
-  const [reset, setReset] = useState(null)
+  // const [reset, setReset] = useState(null)
   const MIN_WORDS = 600;
   const MAX_WORDS = 6000;
 

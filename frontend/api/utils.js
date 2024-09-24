@@ -1,10 +1,52 @@
-// utils.js
+const OpenAI = require('openai');
 
-import OpenAI from 'openai';
+async function AIchanges(jobDescription, initialResume) {
+  const openai = new OpenAI({
+    apiKey: "sk-proj-PSnguLLGqsPNSDIHDkSUT3BlbkFJOTbe7Q5edUPpVYZpLOaA"
+  });
 
-export async function AIchanges(jobDescription, initialResume) {
-  const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
-  
+  const formatOfJson = `{
+    "contact": {
+      "name": "",
+      "email": "",
+      "phone": "",
+      "linkedin": "",
+      "address": "",
+      "title":""
+    },
+    "summary": "",
+    "workExperience": [
+      {
+        "title": "",
+        "company": "",
+        "dates": "",
+        "responsibilities": [
+          ""
+        ]
+      }
+    ],
+    "education": [
+      {
+        "degree": "",
+        "institution": "",
+        "graduationYear": ""
+      }
+    ],
+    "skills": [
+      ""
+    ],
+    "percentagematchingBefore": "",
+    "percentagematchingAfter": "",
+    "advice": "",
+    "resumeDetails": {
+      "company": "",
+      "position": "",
+      "applicantName":"",
+    }
+  }
+  `;
+
+
   const response = await openai.chat.completions.create({
     messages: [
       {
@@ -21,6 +63,7 @@ export async function AIchanges(jobDescription, initialResume) {
     model: "gpt-4o-mini",
     response_format: { type: "json_object" },
   });
-
   return response.choices[0].message.content;
 }
+
+module.exports = { AIchanges };

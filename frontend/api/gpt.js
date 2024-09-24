@@ -1,30 +1,22 @@
-import { db, admin } from "../firebase";
-import { AIchanges, sendBuffer } from "./utils"; // Assuming you refactor helpers
-import { testFirestore } from "./test-firestore";
+const { AIchanges } = require('./utils');  // Extract AI change logic to ai-functions.js
+const { testFirestore } = require('./test-firestore');  // Test Firestore update
+const sendBuffer = require('./download-previous-resume');  // Reuse the sendBuffer function
 
-export default async (req, res) => {
+module.exports = async (req, res) => {
   try {
     const { jobdesk, linkToJob, styleChoice } = req.body;
-    const Airesponses = await AIchanges(jobdesk, dataFromResume);
+    const Airesponses = await AIchanges(jobdesk, req.body.resumeText);  // Pass resumeText
     const Airesponse = JSON.parse(Airesponses);
 
-    await testFirestore(Airesponse, jobdesk, dataFromResume, linkToJob, styleChoice);
+    // Store to Firestore
+    await testFirestore(Airesponse, jobdesk, req.body.resumeText, linkToJob, styleChoice);
 
+    // Generate PDF
     const pdfBuffer = await sendBuffer(Airesponse, styleChoice);
+    res.send(pdfBuffer);
 
-    const { contact, education, skills, workExperience, summary } = Airesponse;
-    if (
-      contact.name === "missing" ||
-      education[0].graduationYear === "missing" ||
-      workExperience[0].company === "missing" ||
-      summary === "missing"
-    ) {
-      return res.status(500).send("Incomplete resume data");
-    }
-
-    res.status(200).send(pdfBuffer);
   } catch (error) {
-    console.error("Error in /gpt endpoint:", error);
-    res.status(500).send("An error occurred: " + error.message);
+    console.log('GPT error:', error);
+    res.status(500).send('An error occurred: ' + error.message);
   }
 };

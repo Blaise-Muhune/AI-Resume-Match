@@ -1,14 +1,14 @@
-const { db, admin } = require('./firebase');
+import { db, admin } from './firebase';
 
-async function testFirestore(AiResponse, jobdesk, pdfdata, linkToJob, styleChoice) {
+export async function testFirestore(AiResponse, jobdesk, pdfdata, linkToJob, styleChoice) {
   try {
     if (AiResponse?.contact?.email === 'missing') {
       console.log('error');
       return;
     }
-    
+
     const docRef = db.collection('Job-applications').doc('application');
-    
+
     await docRef.update({
       resumeDataArray: admin.firestore.FieldValue.arrayUnion({
         jobdesk,
@@ -17,8 +17,8 @@ async function testFirestore(AiResponse, jobdesk, pdfdata, linkToJob, styleChoic
         linkToJob,
         pdfdata,
         resumeId: docRef.id,
-        createdAt: Date()
-      })
+        createdAt: Date(),
+      }),
     });
 
     console.log('Document written successfully.');
@@ -26,5 +26,3 @@ async function testFirestore(AiResponse, jobdesk, pdfdata, linkToJob, styleChoic
     console.log('Firestore error:', error);
   }
 }
-
-module.exports = { testFirestore };

@@ -1,16 +1,11 @@
-const admin = require('firebase-admin');
-
-
-
-// Replace the path with the path to your service account key file
-const serviceAccount = require('./firebase-data.json');
+import * as admin from 'firebase-admin';
+import serviceAccount from './firebase-data.json' assert { type: 'json' };
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
-//   databaseURL: 'https://resume-app-15b91.firebaseio.com/'
+  // databaseURL: 'https://resume-app-15b91.firebaseio.com/'
 });
 
-var db = admin.firestore();
+const db = admin.firestore();
 
-
-module.exports = {admin, db };
+export { admin, db };

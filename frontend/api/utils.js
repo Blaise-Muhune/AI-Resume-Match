@@ -1,10 +1,10 @@
-const OpenAI = require('openai');
+// utils.js
 
-async function AIchanges(jobDescription, initialResume) {
-  const openai = new OpenAI({
-    apiKey: "sk-proj-PSnguLLGqsPNSDIHDkSUT3BlbkFJOTbe7Q5edUPpVYZpLOaA"
-  });
+import OpenAI from 'openai';
 
+export async function AIchanges(jobDescription, initialResume) {
+  const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
+  
   const formatOfJson = `{
     "contact": {
       "name": "",
@@ -63,6 +63,7 @@ async function AIchanges(jobDescription, initialResume) {
     model: "gpt-4o-mini",
     response_format: { type: "json_object" },
   });
+
   return response.choices[0].message.content;
 }
 

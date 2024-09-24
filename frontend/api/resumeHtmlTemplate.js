@@ -1,6 +1,6 @@
 
 
-function HtmlTemplate(template, css, resumeData){
+export default async function HtmlTemplate(template, css, resumeData){
           const obj = {
             template1:{
               html: `<!DOCTYPE html>
@@ -361,7 +361,3 @@ function HtmlTemplate(template, css, resumeData){
 }
 
 
-module.exports = {
-
-HtmlTemplate
-}

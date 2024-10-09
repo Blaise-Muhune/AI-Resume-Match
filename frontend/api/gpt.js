@@ -5,12 +5,9 @@ import { testFirestore } from "./test-firestore";
 export default async (req, res) => {
   try {
     const { jobdesk, linkToJob, styleChoice } = req.body;
-    const Airesponses = await AIchanges(jobdesk, dataFromResume);
-    const Airesponse = JSON.parse(Airesponses);
+    const Airesponses = await AIchanges(jobdesk, dataFromResume, stylechoice);
 
     await testFirestore(Airesponse, jobdesk, dataFromResume, linkToJob, styleChoice);
-
-    const pdfBuffer = await sendBuffer(Airesponse, styleChoice);
 
     const { contact, education, skills, workExperience, summary } = Airesponse;
     if (
@@ -22,7 +19,7 @@ export default async (req, res) => {
       return res.status(500).send("Incomplete resume data");
     }
 
-    res.status(200).send(pdfBuffer);
+    res.status(200).send(Airesponses);
   } catch (error) {
     console.error("Error in /gpt endpoint:", error);
     res.status(500).send("An error occurred: " + error.message);

@@ -66,5 +66,3 @@ export async function AIchanges(jobDescription, initialResume) {
 
   return response.choices[0].message.content;
 }
-
-module.exports = { AIchanges };

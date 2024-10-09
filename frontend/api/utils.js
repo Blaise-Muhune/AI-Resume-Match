@@ -1,8 +1,9 @@
 // utils.js
 
 import OpenAI from 'openai';
+import HtlmTemplate from './resumeHtmlTemplate'
 
-export async function AIchanges(jobDescription, initialResume) {
+export async function AIchanges(jobDescription, initialResume, stylechoice) {
   const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
   
   const formatOfJson = `{
@@ -63,8 +64,8 @@ export async function AIchanges(jobDescription, initialResume) {
     model: "gpt-4o-mini",
     response_format: { type: "json_object" },
   });
-
-  return sendBuffer(response.choices[0].message.content);
+  const parsedR = JSON.parse(respons.choices[0].message.content)
+  return await sendBuffer(response.choices[0].message.content, stylechoice);
 }
 
 async function sendBuffer(Airesponse, styleChoice){ 

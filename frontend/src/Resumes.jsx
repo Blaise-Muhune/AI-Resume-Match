@@ -74,7 +74,7 @@ const Resumes = () => {
   const download = async (index) => {
 
     const body = {Airesponse: resumesData[index].AiResponse, stylechoice: ['template1', 'style2']}
-    await fetch("/api/downlaod-previous-resume", {
+    await fetch("https://resume-backend-6zx09alyh-blaise-muhunes-projects.vercel.app/downlaod-previous-resume", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

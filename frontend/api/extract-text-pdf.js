@@ -5,7 +5,7 @@ import multer from "multer";
 const upload = multer();
 
 // Define the API route
-export default async (req, res) => {
+export default async function dataFromResume(req, res) {
   // Handle the file upload
   upload.single("pdfFile")(req, res, async (err) => {
     if (err) {
@@ -23,9 +23,11 @@ export default async (req, res) => {
       // Parse the PDF buffer
       const result = await pdfParse(pdfBuffer);
       res.status(200).send(result.text);
+      return result.text
     } catch (error) {
       console.error("Error parsing PDF:", error);
       res.status(500).send("Error parsing PDF file");
+      return 'failed at extract-text-pdf'
     }
   });
 };

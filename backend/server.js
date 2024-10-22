@@ -345,7 +345,9 @@ async function sendBuffer(Airesponse, styleChoice){
 
 
 
-
+app.get('/', (req, res) => {
+    res.send('we say this: hello')
+})
 
 
 app.post("/extract-text-pdf", (req, res) => {
@@ -420,7 +422,9 @@ app.post('/downlaod-previous-resume', async (req, res) => {
 });
 
 
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-});
+// const PORT = process.env.PORT || 5000;
+// app.listen(PORT, () => {
+//   console.log(`Server is running on port ${PORT}`);
+// });
+
+module.exports = app;

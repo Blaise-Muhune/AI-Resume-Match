@@ -64,8 +64,8 @@ export async function AIchanges(jobDescription, initialResume, stylechoice) {
     model: "gpt-4o-mini",
     response_format: { type: "json_object" },
   });
-  const parsedR = JSON.parse(respons.choices[0].message.content)
-  return await sendBuffer(response.choices[0].message.content, stylechoice);
+  const parsedR = JSON.parse(response.choices[0].message.content)
+  return await sendBuffer(parsedR, stylechoice);
 }
 
 async function sendBuffer(Airesponse, styleChoice){ 

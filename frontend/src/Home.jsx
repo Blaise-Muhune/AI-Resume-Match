@@ -107,7 +107,7 @@ const App = () => {
     formData.append("pdfFile", file);
 
     setLoadingMessage("extracting data from your resume...");
-    await fetch("/api/extract-text-pdf", {
+    await fetch("https://resume-backend-6zx09alyh-blaise-muhunes-projects.vercel.app/extract-text-pdf", {
       method: "POST",
       body: formData,
     })
@@ -126,7 +126,7 @@ const App = () => {
     const body = { jobdesk, linkToJob, styleChoice };
     let isEnoughData = null;
 
-    await fetch("/api/gpt", {
+    await fetch("https://resume-backend-6zx09alyh-blaise-muhunes-projects.vercel.app/gpt", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

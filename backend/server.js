@@ -345,8 +345,29 @@ async function sendBuffer(Airesponse, styleChoice){
 
 
 
-app.get('/', (req, res) => {
-    res.send('we say this: hello')
+app.get('/',async (req, res) => {
+  const openai =  new OpenAI({
+    apiKey: "sk-proj-PSnguLLGqsPNSDIHDkSUT3BlbkFJOTbe7Q5edUPpVYZpLOaA"
+        })
+
+   response = await openai.chat.completions.create({
+        messages: [
+          {
+            role: "system",
+            content: "You are a helpful Translator assistant designed to translate text from english to french",
+          },
+          { role: "user", content: "hello my friend" } ,
+        ],
+        model: "gpt-4o-mini",
+        response_format: { type: "text" },
+      });
+
+    console.log('________________________________________Start______________________________________________');
+    // console.log(2, response.choices[0].message.content);
+    console.log('_________________________________________End______________________________________________');
+    
+    res.send(response.choices[0].message.content)
+    return response.choices[0].message.content;
 })
 
 
